@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salernes Notre Priorité - Campagne Municipale</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #d4611e 0%, #e87d3e 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-nav {
+            height: 60px;
+        }
+
+        .logo-nav img {
+            height: 100%;
+            width: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: url('/img/equipe.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            min-height: 600px;
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            padding-top: 3rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 4rem 2rem;
+        }
+
+        h2 {
+            color: #d4611e;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .portraits {
+            background-color: #f9f9f9;
+        }
+
+        .portrait-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .portrait-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .portrait-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .portrait-img {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #e87d3e 0%, #d4611e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            overflow: hidden;
+        }
+
+        .portrait-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .portrait-info {
+            padding: 1.5rem;
+        }
+
+        .portrait-info h3 {
+            color: #d4611e;
+            margin-bottom: 0.5rem;
+        }
+
+        .lettre {
+            background: white;
+        }
+
+        .lettre-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #f9f9f9;
+            padding: 3rem;
+            border-left: 5px solid #6b9e3e;
+            border-radius: 5px;
+            line-height: 1.8;
+        }
+
+        .lettre-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .signature {
+            text-align: right;
+            font-style: italic;
+            margin-top: 2rem;
+            color: #d4611e;
+            font-weight: bold;
+        }
+
+        .programme {
+            background: linear-gradient(135deg, #f9f9f9 0%, #fff 100%);
+        }
+
+        .programme-items {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .programme-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid #6b9e3e;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .programme-item h3 {
+            color: #d4611e;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .programme-item ul {
+            list-style: none;
+            padding-left: 0;
+            display: inline-block;
+            text-align: left;
+        }
+
+        .programme-item li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .programme-item li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #6b9e3e;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .logo-header {
+            max-width: 150px;
+            margin: 0 auto 2rem;
+        }
+
+        .logo-header img {
+            width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-nav">
+                <img src="logo.jpg" alt="Salernes Notre Priorité" onerror="this.style.display='none'; this.parentElement.innerHTML='<svg width=\'200\' height=\'60\' xmlns=\'http://www.w3.org/2000/svg\'><polygon points=\'30,10 45,30 30,50 15,30\' fill=\'white\' opacity=\'0.9\'/><text x=\'55\' y=\'38\' font-size=\'20\' fill=\'white\' font-weight=\'bold\'>Salernes Notre Priorité</text></svg>';">
+            </div>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#portraits">Portraits</a></li>
+                <li><a href="#lettre">Lettre d'Intention</a></li>
+                <li><a href="#programme">Programme</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="accueil" class="hero">
+        <div class="container">
+            <h1>Salernes Notre Priorité</h1>
+            <p>Ensemble, construisons l'avenir de notre commune</p>
+        </div>
+    </section>
+
+    <section id="lettre" class="lettre">
+        <div class="container">
+            <h2>Lettre d'Intention</h2>
+            <div class="lettre-content">
+                <p><strong>Chères Salernoises, Chers Salernois,</strong></p>
+                
+                <p>C'est avec un profond attachement à notre commune et une détermination sans faille que je me présente aujourd'hui à vous pour les élections municipales. Salernes, notre village provençal au riche patrimoine, mérite un avenir à la hauteur de son histoire.</p>
+                
+                <p>Depuis de nombreuses années, j'observe, j'écoute et je partage votre quotidien. Je connais vos préoccupations : la préservation de nos commerces de proximité, l'accès aux services publics, la valorisation de notre patrimoine historique, le soutien à nos écoles, et la protection de notre environnement exceptionnel.</p>
+                
+                <p>Notre commune fait face à des défis importants. Le déclin de notre centre-ville, la nécessité de créer des emplois locaux, l'amélioration de nos infrastructures, tout en préservant ce qui fait l'âme de Salernes : notre artisanat de la céramique, nos paysages méditerranéens, notre qualité de vie.</p>
+                
+                <p>Je ne vous promets pas la lune, mais un engagement sincère et total. Mon équipe et moi-même travaillerons sans relâche pour redonner à Salernes le dynamisme qu'elle mérite, en associant tous les Salernois à nos décisions. La démocratie participative sera au cœur de notre action.</p>
+                
+                <p>Notre programme, construit avec vous et pour vous, s'articule autour de valeurs essentielles : la solidarité, la transparence, l'écologie et le développement économique responsable. Nous voulons une commune vivante, où il fait bon vivre à tout âge.</p>
+                
+                <p>Ensemble, faisons de Salernes une priorité. Notre priorité.</p>
+                
+                <div class="signature">Virgini<br>Candidate à la Mairie de Salernes</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programme" class="programme">
+        <div class="container">
+            <h2>Notre Programme</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 1rem; color: #d4611e;"><strong>Cible : la jeunesse et la Redynamisation de Salernes</strong></p>
+            
+            <div class="programme-items">
+                <div class="programme-item">
+                    <h3>🏘️ Environnement - Cadre de vie - Vivre ensemble</h3>
+                    <ul>
+                        <li>Politique de stationnement</li>
+                        <li>Création d'un pôle de vie central sur le Cours Théodore Bouge</li>
+                        <li>Mise en place de services administratifs, juridiques, sociaux, culturels accessibles à tous</li>
+                        <li>Navettes pour nos aînés et personnes à mobilité réduite</li>
+                        <li>Permanence hebdomadaire du maire et de ses adjoints le samedi matin</li>
+                        <li>Accueil de bienvenue des tous nouveaux arrivants sur Salernes</li>
+                    </ul>
+                </div>
+
+                <div class="programme-item">
+                    <h3>🎭 Culture & Animations</h3>
+                    <ul>
+                        <li>Municipalisation du comité des fêtes</li>
+                        <li>Relance des festivités et animations diverses et variées tous publics</li>
+                        <li>Festivités pour les jeunes, fête des enfants, carnaval, fêtes foraines</li>
+                        <li>Belle parade de Noël, bals mousse, téléthon, Course à la tomette</li>
+                        <li>Fête de la musique, journées à thèmes, apéritifs concerts, guinguettes</li>
+                        <li>Thés dansants, concerts, concours de peinture, journée du livre</li>
+                        <li>Festival de la terre, Saint Patrick, fête de la Ste Catherine, Marchés de Noël</li>
+                    </ul>
+                </div>
+
+                <div class="programme-item">
+                    <h3>🎓 Éducation - Enfance - Petite Enfance</h3>
+                    <ul>
+                        <li>Cohésion avec les enseignants en tant que partenaires du système éducatif</li>
+                        <li>Soutien affirmé aux parents d'élèves</li>
+                        <li>Camps d'ados, colonies de vacances pour les enfants</li>
+                        <li>Implication des enfants à l'environnement et à l'écologie</li>
+                        <li>Restructuration du centre aéré</li>
+                        <li>Étude de déplacement de l'école maternelle à côté de l'école communale Jean Courtin</li>
+                        <li>Amélioration de la dépose des enfants à la maternelle</li>
+                        <li>Réaménagement du jardin d'enfants sécurisé avec vidéo protection</li>
+                    </ul>
+                </div>
+
+                <div class="programme-item">
+                    <h3>⚽ Jeunesse & Sports</h3>
+                    <ul>
+                        <li>Création d'un pôle jeunesse avec ludothèque, gaming</li>
+                        <li>Conseil municipal des jeunes</li>
+                        <li>Prévention et lutte contre la délinquance sous toutes ses formes</li>
+                        <li>Projet de création d'une salle polyvalente, multisports au stade Pin Bernard</li>
+                        <li>Création d'un parcours de santé (Pin Bernard)</li>
+                    </ul>
+                </div>
+
+                <div class="programme-item">
+                    <h3>🤝 Associations - Gestion des salles & Logistique</h3>
+                    <ul>
+                        <li>Création d'une maison des associations et soutien aux associations</li>
+                        <li>Gestion et équipement des salles communales</li>
+                        <li>Investissements matériel communal</li>
+                    </ul>
+                </div>
+
+                <div class="programme-item">
+                    <h3>🚨 Sécurité</h3>
+                    <ul>
+                        <li>Embauche d'un agent de police municipale</li>
+                        <li>Sécurisation des passages piétons (LED)</li>
+                        <li>Renforcement de la vidéo protection</li>
+                    </ul>
+                </div>
+
+                <div class="programme-item">
+                    <h3>❤️ Social - Santé - 3ème âge</h3>
+                    <ul>
+                        <li>Étude d'un pôle médical d'urgences</li>
+                        <li>Lutte contre l'isolement des personnes âgées</li>
+                        <li>Favorisation des échanges intergénérationnels</li>
+                        <li>Mise en place d'une mutuelle communale</li>
+                    </ul>
+                </div>
+
+                <div class="programme-item">
+                    <h3>🏠 Logement</h3>
+                    <ul>
+                        <li>Projet de logement d'urgence</li>
+                    </ul>
+                </div>
+
+                <div class="programme-item">
+                    <h3>🏛️ Économie - Tourisme & Patrimoine</h3>
+                    <ul>
+                        <li>Soutien au commerce local et valorisation du marché</li>
+                        <li>Relance de la filière de la figue de Salernes et fête du Figon</li>
+                        <li>Préservation et mise en valeur du patrimoine et accès public</li>
+                        <li>Renforcement de la sécurisation et valorisation du château féodal</li>
+                        <li>Circuit piétonnier balisé pour visite du cœur de ville</li>
+                        <li>Marchés potiers, céramisme & artisanat</li>
+                        <li>Étude d'un centre de formation des métiers de la terre cuite et crue</li>
+                    </ul>
+                </div>
+
+                <div class="programme-item">
+                    <h3>🌱 Transition écologique et énergétique</h3>
+                    <ul>
+                        <li>Préservation et protection de l'environnement</li>
+                        <li>Lutte et prévention des dépôts sauvages</li>
+                        <li>Mise en place d'une politique municipale éco-responsable</li>
+                        <li>Actions & animations autour de la biodiversité à St Barthélemy</li>
+                        <li>Opération « World Clean Up Day »</li>
+                    </ul>
+                </div>
+
+                <div class="programme-item">
+                    <h3>📢 Communication</h3>
+                    <ul>
+                        <li>Mise en place d'un service communication</li>
+                        <li>Rédaction d'un bulletin municipal « Le Petit Salernois »</li>
+                        <li>Mise en place de l'application Panneau Pocket</li>
+                    </ul>
+                </div>
+
+                <div class="programme-item">
+                    <h3>🏗️ Urbanisme - PLU - Eau & Assainissement</h3>
+                    <ul>
+                        <li>PLU : Préservation de l'enveloppe verte de Salernes</li>
+                        <li>Eau & Assainissement : Veille des intérêts des Salernois</li>
+                        <li>Poursuite de la politique des biens en déshérence</li>
+                    </ul>
+                </div>
+
+                <div class="programme-item">
+                    <h3>🔨 Travaux</h3>
+                    <ul>
+                        <li>Valorisation et sécurisation du château féodal via chantiers participatifs</li>
+                        <li>Mise en sécurité et préservation des lieux de culte</li>
+                        <li>Accessibilité des trottoirs</li>
+                        <li>Audit des chemins communaux pour remise en état</li>
+                    </ul>
+                </div>
+
+                <div class="programme-item">
+                    <h3>💰 Finances locales</h3>
+                    <ul>
+                        <li>Tout sera mis en œuvre pour éviter les dérives budgétaires</li>
+                        <li>Appel à toutes les subventions possibles</li>
+                        <li>Recours minimal aux ressources propres de la commune</li>
+                    </ul>
+                </div>
+
+                <div class="programme-item">
+                    <h3>👥 Gestion du personnel communal</h3>
+                    <ul>
+                        <li>Attention et considération particulière portée au personnel communal</li>
+                        <li>Cahier de doléances</li>
+                        <li>Respect, équité, bienveillance, écoute, protection</li>
+                        <li>Valorisation, reconnaissance, motivation et perspectives d'évolution</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programme" class="programme">
+        <div class="container">
+            <h2>Notre Programme</h2>
+            <div class="programme-items">
+                <div class="programme-item">
+                    <h3>🏛️ Patrimoine et Culture</h3>
+                    <ul>
+                        <li>Restauration et mise en valeur du patrimoine historique de Salernes</li>
+                        <li>Soutien aux artisans céramistes et promotion de notre savoir-faire</li>
+                        <li>Création d'événements culturels tout au long de l'année</li>
+                        <li>Développement du tourisme patrimonial et artisanal</li>
+                    </ul>
+                </div>
+
+                <div class="programme-item">
+                    <h3>🌱 Environnement et Cadre de Vie</h3>
+                    <ul>
+                        <li>Préservation de nos espaces naturels et de notre biodiversité</li>
+                        <li>Développement des mobilités douces et pistes cyclables</li>
+                        <li>Création de jardins partagés et espaces verts</li>
+                        <li>Zéro plastique dans les cantines et services municipaux</li>
+                        <li>Programme d'isolation thermique des bâtiments publics</li>
+                    </ul>
+                </div>
+
+                <div class="programme-item">
+                    <h3>💼 Économie et Commerce</h3>
+                    <ul>
+                        <li>Soutien aux commerces de proximité du centre-ville</li>
+                        <li>Aide à l'installation de nouveaux artisans et commerçants</li>
+                        <li>Promotion des circuits courts et de l'agriculture locale</li>
+                        <li>Création d'une pépinière d'entreprises</li>
+                        <li>Développement du coworking pour attirer de nouveaux actifs</li>
+                    </ul>
+                </div>
+
+                <div class="programme-item">
+                    <h3>👨‍👩‍👧‍👦 Solidarité et Vivre Ensemble</h3>
+                    <ul>
+                        <li>Maintien et renforcement des services publics de proximité</li>
+                        <li>Création d'une maison des associations</li>
+                        <li>Programme d'aide aux personnes âgées et aux personnes en situation de handicap</li>
+                        <li>Soutien aux familles et aux jeunes parents</li>
+                        <li>Développement de logements sociaux et accessibles</li>
+                    </ul>
+                </div>
+
+                <div class="programme-item">
+                    <h3>🎓 Éducation et Jeunesse</h3>
+                    <ul>
+                        <li>Rénovation et équipement des écoles en matériel moderne</li>
+                        <li>Développement des activités périscolaires de qualité</li>
+                        <li>Création d'un espace jeunes avec accompagnement éducatif</li>
+                        <li>Soutien aux initiatives culturelles et sportives pour les jeunes</li>
+                        <li>Mise en place de cantines bio et locales</li>
+                    </ul>
+                </div>
+
+                <div class="programme-item">
+                    <h3>🏗️ Aménagement et Urbanisme</h3>
+                    <ul>
+                        <li>Rénovation du centre-ville et embellissement des espaces publics</li>
+                        <li>Amélioration de la voirie et de l'éclairage public</li>
+                        <li>Création de parkings et amélioration de la circulation</li>
+                        <li>Développement d'un urbanisme respectueux de l'identité provençale</li>
+                        <li>Réhabilitation des bâtiments vacants</li>
+                    </ul>
+                </div>
+
+                <div class="programme-item">
+                    <h3>🤝 Démocratie Participative</h3>
+                    <ul>
+                        <li>Création de conseils de quartier</li>
+                        <li>Mise en place d'un budget participatif</li>
+                        <li>Organisation de réunions publiques régulières</li>
+                        <li>Transparence totale sur les décisions municipales</li>
+                        <li>Plateforme numérique de participation citoyenne</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Salernes Notre Priorité - Liste citoyenne pour les élections municipales</p>
+            <p>Contact : contact@salernes-notrepriorite.fr</p>
+        </div>
+    </footer>
+</body>
+</html>
